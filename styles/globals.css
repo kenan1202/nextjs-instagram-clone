@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .headerIcon {
+        @apply hidden w-8 hover:scale-125 transition duration-200;
+    }
+}
+
