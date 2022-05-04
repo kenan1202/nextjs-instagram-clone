@@ -45,9 +45,9 @@ function Post({ post, id: postId }) {
         snapshot.docs.forEach((el) => {
           if (
             el.data().username ===
-            (user.nickname.trim().includes(' ')
-              ? user.nickname.trim().toLowerCase().split(' ').join('')
-              : user.nickname.trim().toLowerCase())
+            (user?.nickname?.trim().includes(' ')
+              ? user?.nickname?.trim().toLowerCase().split(' ').join('')
+              : user?.nickname?.trim().toLowerCase())
           ) {
             setLiked(true)
           } else {
@@ -74,9 +74,9 @@ function Post({ post, id: postId }) {
     setLiked(true)
 
     await setDoc(doc(db, `posts/${postId}/likes/${user.sub.split('|')[1]}`), {
-      username: user.nickname.trim().includes(' ')
-        ? user.nickname.trim().toLowerCase().split(' ').join('')
-        : user.nickname.trim().toLowerCase(),
+      username: user?.nickname?.trim().includes(' ')
+        ? user?.nickname?.trim().toLowerCase().split(' ').join('')
+        : user?.nickname?.trim().toLowerCase(),
       createdAt: serverTimestamp(),
     })
   }
@@ -91,10 +91,10 @@ function Post({ post, id: postId }) {
     setComment('')
 
     await addDoc(collection(db, `posts/${postId}/comments`), {
-      profilePic: user.picture,
-      username: user.nickname.trim().includes(' ')
-        ? user.nickname.trim().toLowerCase().split(' ').join('')
-        : user.nickname.trim().toLowerCase(),
+      profilePic: user?.picture,
+      username: user?.nickname?.trim().includes(' ')
+        ? user?.nickname?.trim().toLowerCase().split(' ').join('')
+        : user?.nickname?.trim().toLowerCase(),
       comment,
       createdAt: serverTimestamp(),
     })
